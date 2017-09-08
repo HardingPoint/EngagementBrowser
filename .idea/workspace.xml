@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10422f96-c891-4bc6-8629-1679a056e405" name="Default" comment="" />
+    <list default="true" id="10422f96-c891-4bc6-8629-1679a056e405" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/neovigator.rb" afterPath="$PROJECT_DIR$/neovigator.rb" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -132,12 +134,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1504874820031</updated>
-      <workItem from="1504874823198" duration="11429000" />
+      <workItem from="1504874823198" duration="11760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11429000" />
+    <option name="totallyTimeSpent" value="11760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1861" y="-90" width="1440" height="825" extended-state="0" />
@@ -296,14 +298,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neovigator.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="132" column="113" lean-forward="false" selection-start-line="132" selection-start-column="113" selection-end-line="132" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/ui.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-838">
@@ -353,6 +347,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neovigator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="132" column="119" lean-forward="false" selection-start-line="132" selection-start-column="119" selection-end-line="132" selection-end-column="119" />
           <folding />
         </state>
       </provider>
