@@ -13,16 +13,19 @@
     %canvas#neoviz
     %header
       %section#title
-        %h1 Harding Point
-        %p Engagement Browser
+
+      %a{:href => "http://www.HardingPoint.com"}
+      %img{:src=> "https://static.wixstatic.com/media/983560_24748254a92c48dcaefe298643593eae~mv2.png/v1/fill/w_151,h_80,al_c,usm_0.66_1.00_0.01/983560_24748254a92c48dcaefe298643593eae~mv2.png"}
+
       %section#search
         %form{:action => "/", :method => "get"}
           %label Node ID:
           %input#neoid{:type => "text", :value => "#{@neoid}", :name => "neoid"}
           %input#loadnode{:type => "submit", :value => "Load", :class => "button"}
-      %br{:style => "clear: both;"}
+
     %section#content
       = yield
+
     %aside
       %div#explanation
         / Engagement Browser introduction

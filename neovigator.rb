@@ -130,9 +130,9 @@ helpers do
 
     Id = params[:id]
     if(Id.length < 18)
-        Query = "OPTIONAL MATCH (a)-[r]-(related) where ID(a)=#{params[:id]} RETURN a, r, related"
+        Query = "OPTIONAL MATCH (a)-[r]-(related) where ID(a)=#{params[:id]} RETURN a, r, related ORDER BY r DESC"
     else
-        Query = "OPTIONAL MATCH (a{Id:'#{params[:id]}'})-[r]-(related) RETURN a, r, related"
+        Query = "OPTIONAL MATCH (a{Id:'#{params[:id]}'})-[r]-(related) RETURN a, r, related ORDER BY r DESC"
     end
 
     puts Query
