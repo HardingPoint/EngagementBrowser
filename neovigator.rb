@@ -128,7 +128,13 @@ helpers do
     # Query = "OPTIONAL MATCH (a{Id:'#{params[:id]}'})-[r]-(related) RETURN a, r, related"
     # OPTIONAL MATCH (a)-[r]-(related) where ID(a)=9 RETURN a, r, related
 
-    Query = "OPTIONAL MATCH (a)-[r]-(related) where ID(a)=#{params[:id]} RETURN a, r, related"
+    Id = params[:id]
+    if(Id.length < 18)
+        Query = "OPTIONAL MATCH (a)-[r]-(related) where ID(a)=#{params[:id]} RETURN a, r, related"
+    else
+        Query = "OPTIONAL MATCH (a{Id:'#{params[:id]}'})-[r]-(related) RETURN a, r, related"
+    end
+
     puts Query
 
     cypher = Query
