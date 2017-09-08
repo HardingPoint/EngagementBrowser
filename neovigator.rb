@@ -20,9 +20,7 @@ class Neovigator < Sinatra::Application
     end
 
     def neo
-     # @neo = Neography::Rest.new(ENV["GRAPHENEDB_URL"] || "http://neo4j:swordfish@localhost:7474")
-     # @neo = Neography::Rest.new("http://app76533446-Oo3JgL:b.o63DvL6XQQFZ.f5hY5HIHeHwujbb0@hobby-ndmapofkojekgbkeofgpibpl.dbs.graphenedb.com:24789")
-    @neo = Neography::Rest.new(ENV["GRAPHENEDB_URL"] || "http://app74481404-2ZqNK9:b.gNozxJfZREtq.NQjp2KCtz9nXF9sd@hobby-edgigkgpoeaggbkejlmdpopl.dbs.graphenedb.com:24789")
+     @neo = Neography::Rest.new(ENV["GRAPHCONNECT_URL"] || ENV["GRAPHENEDB_URL"] || "http://app76410902-RGguml:b.gRRjGRClMX0a.G5g3kpjYcA8aeyGP@hobby-ccdolkgcjildgbkeipihgbpl.dbs.graphenedb.com:24789")
     end
   end
   
@@ -40,7 +38,7 @@ class Neovigator < Sinatra::Application
     organizations = %w[Farm KFC Pepsi]
     products = %w[chicken_raw chicken_fried softdrinks]
     locations = %w[New\ York\ City Iowa]
-      
+
     cypher = "CREATE (n:Organization) SET n = {nodes} RETURN  ID(n) AS id, n.name AS name"
     nodes = []
     organizations.each { |n| nodes <<  {"name" => n} }
@@ -50,16 +48,16 @@ class Neovigator < Sinatra::Application
     nodes = []
     locations.each { |n| nodes << {"name" => n} }
     locations = hashify(neo.execute_query(cypher, {:nodes => nodes}))
-  
+
     cypher = "CREATE (n:Product) SET n = {nodes} RETURN  ID(n) AS id, n.name AS name"
-    nodes = []  
+    nodes = []
     products.each { |n| nodes << {"name" => n} }
     products = hashify(neo.execute_query(cypher, {:nodes => nodes}))
-    
+
     neo.execute_query("CREATE INDEX ON :Organization(name)")
     neo.execute_query("CREATE INDEX ON :Location(name)")
     neo.execute_query("CREATE INDEX ON :Product(name)")
-  
+
     #C reating relationships manually:
     commands = []
     farm = organizations[0]
@@ -70,20 +68,20 @@ class Neovigator < Sinatra::Application
     chicken_raw = products[0]
     chicken_fried = products[1]
     softdrinks = products[2]
-    
-    commands << [:create_relationship, "located_in", pepsi["id"], nyc["id"], nil]    
-    commands << [:create_relationship, "located_in", kfc["id"], nyc["id"], nil]    
-    commands << [:create_relationship, "located_in", farm["id"], iowa["id"], nil]    
-    
-    commands << [:create_relationship, "makes", farm["id"], chicken_raw["id"], nil]    
-    commands << [:create_relationship, "makes", kfc["id"], chicken_fried["id"], nil]    
-    commands << [:create_relationship, "makes", pepsi["id"], softdrinks["id"], nil] 
-    
-    commands << [:create_relationship, "buys", kfc["id"], chicken_raw["id"], nil]        
-    commands << [:create_relationship, "buys", pepsi["id"], chicken_fried["id"], nil]        
-    commands << [:create_relationship, "buys", kfc["id"], softdrinks["id"], nil]                
-    commands << [:create_relationship, "buys", farm["id"], chicken_fried["id"], nil]        
-                
+
+    commands << [:create_relationship, "located_in", pepsi["id"], nyc["id"], nil]
+    commands << [:create_relationship, "located_in", kfc["id"], nyc["id"], nil]
+    commands << [:create_relationship, "located_in", farm["id"], iowa["id"], nil]
+
+    commands << [:create_relationship, "makes", farm["id"], chicken_raw["id"], nil]
+    commands << [:create_relationship, "makes", kfc["id"], chicken_fried["id"], nil]
+    commands << [:create_relationship, "makes", pepsi["id"], softdrinks["id"], nil]
+
+    commands << [:create_relationship, "buys", kfc["id"], chicken_raw["id"], nil]
+    commands << [:create_relationship, "buys", pepsi["id"], chicken_fried["id"], nil]
+    commands << [:create_relationship, "buys", kfc["id"], softdrinks["id"], nil]
+    commands << [:create_relationship, "buys", farm["id"], chicken_fried["id"], nil]
+
     neo.batch *commands
 
   end
