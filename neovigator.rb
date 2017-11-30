@@ -139,6 +139,10 @@ helpers do
     puts Query
 
     cypher = Query
+
+    ##### This is where you would substitute what is passed in the URL
+    cypher = "MATCH (a{ sfdcorgid: '00D1I000003nRMaUAM', sfdcid: '0011I00000C3vE8QAJ' })-[r]-(related) RETURN a, r, related ORDER BY TYPE(r) DESC"
+
     # cypher = "OPTIONAL MATCH (a{Id:'0010x000002IHpJAAW'})-[r]-(related) RETURN a, r, related"
     # cypher = "OPTIONAL MATCH (a{Id:'#{params["neoid"]}')-[r]-(related) RETURN a, r, related"
 
