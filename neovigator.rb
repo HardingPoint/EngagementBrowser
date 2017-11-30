@@ -20,7 +20,8 @@ class Neovigator < Sinatra::Application
     end
 
     def neo
-     @neo = Neography::Rest.new(ENV["GRAPHCONNECT_URL"] || ENV["GRAPHENEDB_URL"] || "http://app76410902-RGguml:b.gRRjGRClMX0a.G5g3kpjYcA8aeyGP@hobby-ccdolkgcjildgbkeipihgbpl.dbs.graphenedb.com:24789")
+     # @neo = Neography::Rest.new(ENV["GRAPHCONNECT_URL"] || ENV["GRAPHENEDB_URL"] || "http://app76410902-RGguml:b.gRRjGRClMX0a.G5g3kpjYcA8aeyGP@hobby-ccdolkgcjildgbkeipihgbpl.dbs.graphenedb.com:24789")
+    @neo = Neography::Rest.new("https://app81968631-36639150412295652:b.l9NxNuXAUHwM.1SPOLcAFn9IGcUuS@db-mktazcgcp0kynfraaihw.graphenedb.com:24780")
     end
   end
   
